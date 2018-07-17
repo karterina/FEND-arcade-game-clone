@@ -1,6 +1,17 @@
-frontend-nanodegree-arcade-game
-===============================
+# Classic Arcade Game Clone
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+A Udacity project, part of the Front End Web Developer nanodegree. This project is designed to train OOP using JavaScript.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## How to run the game
+
+1. Clone or download repo's zip file to your local machine.
+2. Open index.html file in a browser of your choice.
+3. Enjoy your time spent with those lovely giant bugs!
+
+## How to play
+
+* You are the Pink Girl at the bottom of the field. Use arrow keys (left, right, up, down) to navigate the field.
+* The goal is to get to the water across the road without colliding with any of the bugs.
+* Collision with a bug results in the character resetting to the initial position. This means you've lost. Background changes to red as a sign of failure.
+* Getting to the water at the top means you've won. The character gets back to the starting point so that you can play again. Background changes to blue as a sign of relaxation and bliss.
+* Enjoy!
