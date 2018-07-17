@@ -25,14 +25,14 @@ Enemy.prototype.update = function(dt) {
     // if collision happens
     if (player.x < this.x + 80 &&
     player.x + 80 > this.x &&
-    player.y < this.y + 60 &&
-    player.y + 60 > this.y) {
+    player.y < this.y + 50 &&
+    player.y + 50 > this.y) {
       player.x = 252;
       player.y = 536;
     }
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the enemy on the screen
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -47,6 +47,28 @@ var Player = function(x, y) {
   //loading image for the player object
   this.player = 'images/char-pink-girl.png'
 }
+
+
+Player.prototype.update = function () {
+  //preventing the player going off screen
+  if (this.x > 450 || this.x < 0) {
+    this.x = 252;
+  }
+  if (this.y > 536) {
+    this.y = 536;
+  }
+  //checking for player getting to the top of the canvas and winning
+  if (this.y < 0) {
+    this.x = 252;
+    this.y = 536;
+  }
+}
+
+// draw the player on the screen
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.player), this.x, this.y);
+}
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
