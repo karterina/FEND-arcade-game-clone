@@ -27,6 +27,9 @@ Enemy.prototype.update = function(dt) {
     player.x + 80 > this.x &&
     player.y < this.y + 50 &&
     player.y + 50 > this.y) {
+      alert('You loose! Try again, you will make it this time!');
+      // changing backgroung to red
+      document.querySelector('body').style.background='url("images/bg1.jpg")';
       player.x = 200;
       player.y = 400;
     }
@@ -61,6 +64,9 @@ Player.prototype.update = function () {
   //checking for player getting to the top of the canvas
   //and winning/getting back at the start point
   if (this.y < 0) {
+    alert('You have won! Hooray! Those nasty bugs better beware!');
+    // changes background to blue
+    document.querySelector('body').style.background='url("images/bg9.jpg")';
     this.x = 200;
     this.y = 400;
   }
@@ -86,6 +92,7 @@ Player.prototype.handleInput = function(key) {
       this.y += 85;
     }
 }
+
 
 // all created enemies
 var allEnemies = [];
