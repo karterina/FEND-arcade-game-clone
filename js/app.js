@@ -1,5 +1,7 @@
+// global variable to use when changing background
+const body = document.querySelector('body');
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+const Enemy = function(x, y, speed) {
     //setting coordinates and speed
     this.x = x;
     this.y = y;
@@ -29,7 +31,7 @@ Enemy.prototype.update = function(dt) {
     player.y + 50 > this.y) {
       alert('You loose! Try again, you will make it this time!');
       // changing backgroung to red
-      document.querySelector('body').style.background='url("images/bg1.jpg")';
+      body.style.background='url("images/bg1.jpg")';
       player.x = 200;
       player.y = 400;
     }
@@ -41,7 +43,7 @@ Enemy.prototype.render = function() {
 };
 
 // player character
-var Player = function(x, y) {
+const Player = function(x, y) {
   //setting coordinates
   this.x = x;
   this.y = y;
@@ -66,7 +68,7 @@ Player.prototype.update = function () {
   if (this.y < 0) {
     alert('You have won! Hooray! Those nasty bugs better beware!');
     // changes background to blue
-    document.querySelector('body').style.background='url("images/bg9.jpg")';
+    body.style.background='url("images/bg9.jpg")';
     this.x = 200;
     this.y = 400;
   }
@@ -95,9 +97,9 @@ Player.prototype.handleInput = function(key) {
 
 
 // all created enemies
-var allEnemies = [];
+let allEnemies = [];
 // starting points/lines for enemies to appear
-var enemyStart = [65, 145, 225];
+const enemyStart = [65, 145, 225];
 
 // creating enemies and putting them on the starting points
 enemyStart.forEach(function(y) {
@@ -106,7 +108,7 @@ enemyStart.forEach(function(y) {
 });
 
 // creating the player
-var player = new Player(200, 400);
+const player = new Player(200, 400);
 
 // This listens for key presses and sends the keys to the
 // Player.handleInput() method
