@@ -10,9 +10,10 @@ const Enemy = function(x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
 };
 
+
 // Update the enemy's position
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function(dt, player) {
     // Multiplies any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -22,7 +23,8 @@ Enemy.prototype.update = function(dt) {
       this.x = -110;
       // randomizing speed
       this.speed = 100 + Math.floor(Math.random() * 452);
-    }
+    };
+    collision(player, enemy);
     // checking for collision and returning player to the initial point
     // when collision happens
     if (player.x < this.x + 80 &&
@@ -34,8 +36,10 @@ Enemy.prototype.update = function(dt) {
       body.style.background='url("images/bg1.jpg")';
       player.x = 200;
       player.y = 400;
-    }
+    };
 };
+
+
 
 // Draw the enemy on the screen
 Enemy.prototype.render = function() {
@@ -49,7 +53,7 @@ const Player = function(x, y) {
   this.y = y;
   //loading image for the player object
   this.character = 'images/char-pink-girl.png'
-}
+};
 
 // updating player's position
 Player.prototype.update = function () {
@@ -71,13 +75,14 @@ Player.prototype.update = function () {
     body.style.background='url("images/bg9.jpg")';
     this.x = 200;
     this.y = 400;
-  }
-}
+  };
+};
 
 // draw the player on the screen
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.character), this.x, this.y);
-}
+};
+
 
 //moving the player depending on what keys were pressed by the user
 Player.prototype.handleInput = function(key) {
@@ -93,7 +98,7 @@ Player.prototype.handleInput = function(key) {
     if (key == 'down') {
       this.y += 85;
     }
-}
+};
 
 
 // all created enemies
@@ -104,7 +109,7 @@ const enemyStart = [65, 145, 225];
 // creating enemies and putting them on the starting points
 enemyStart.forEach(function(y) {
   enemy = new Enemy(0, y, 100 + Math.floor(Math.random() * 452));
-  allEnemies.push(enemy)
+  allEnemies.push(enemy);
 });
 
 // creating the player
@@ -119,6 +124,5 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
-});
+}, player);
