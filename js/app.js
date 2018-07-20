@@ -10,10 +10,24 @@ const Enemy = function(x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
 };
 
+// checking for collision and returning player to the initial point
+// when collision happens
+function collision(player, enemy) {
+  if (player.x < enemy.x + 80 &&
+  player.x + 80 > enemy.x &&
+  player.y < enemy.y + 50 &&
+  player.y + 50 > enemy.y) {
+    alert('You loose! Try again, you will make it this time!');
+    // changing backgroung to red
+    body.style.background='url("images/bg1.jpg")';
+    player.x = 200;
+    player.y = 400;
+  };
+};
 
 // Update the enemy's position
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt, player) {
+Enemy.prototype.update = function(dt) {
     // Multiplies any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -24,19 +38,7 @@ Enemy.prototype.update = function(dt, player) {
       // randomizing speed
       this.speed = 100 + Math.floor(Math.random() * 452);
     };
-    collision(player, enemy);
-    // checking for collision and returning player to the initial point
-    // when collision happens
-    if (player.x < this.x + 80 &&
-    player.x + 80 > this.x &&
-    player.y < this.y + 50 &&
-    player.y + 50 > this.y) {
-      alert('You loose! Try again, you will make it this time!');
-      // changing backgroung to red
-      body.style.background='url("images/bg1.jpg")';
-      player.x = 200;
-      player.y = 400;
-    };
+    collision(player, this);
 };
 
 

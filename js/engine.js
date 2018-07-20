@@ -78,8 +78,7 @@ var Engine = (function(global) {
      * on the entities themselves within your app.js file).
      */
     function update(dt) {
-        updateEntities(dt, player);
-        //checkCollisions();
+        updateEntities(dt);
     }
 
     /* This is called by the update function and loops through all of the
@@ -90,9 +89,9 @@ var Engine = (function(global) {
      * render methods.
      */
 
-    function updateEntities(dt, player) {
+    function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
-            enemy.update(dt, player);
+            enemy.update(dt);
         });
         player.update();
     }
@@ -146,7 +145,7 @@ var Engine = (function(global) {
      * tick. Its purpose is to then call the render functions you have defined
      * on your enemy and player entities within app.js
      */
-    function renderEntities(player) {
+    function renderEntities() {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
